@@ -25,4 +25,3 @@ func main() {
 	changeName(&person)
 	fmt.Println(person.Name) // Выведет "Bob"
 }
-*/

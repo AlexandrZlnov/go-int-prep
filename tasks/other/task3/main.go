@@ -76,5 +76,5 @@ func balance() (int, error) {
 		return 0, errReturn
 	}
 	// Как-то считается сумма значений в мапе и возвращается
-	return sumOfMap, nil
+	return sumOfMap(), nil
 }
