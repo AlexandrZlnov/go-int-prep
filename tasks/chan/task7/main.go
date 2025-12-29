@@ -60,10 +60,13 @@ func case3(parentCtx context.Context, channels ...chan int) chan int {
 }
 
 func main() {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
 	a := make(chan int)
 	b := make(chan int)
 
-	out := case3(a, b)
+	out := case3(ctx, a, b)
 
 	go func() {
 		a <- 1

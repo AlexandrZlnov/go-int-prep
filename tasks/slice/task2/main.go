@@ -5,7 +5,7 @@ import "fmt"
 
 func main() {
 	a := make([]int, 0, 3)
-	var a []int
+	//var a []int
 	fmt.Println(a == nil)
 	fmt.Printf("Array: %v, Len: %v, Cap: %v, Pointer: %p\n", a, len(a), cap(a), a)
 	a = append(a, 1)
