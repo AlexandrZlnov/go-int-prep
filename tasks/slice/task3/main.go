@@ -16,6 +16,7 @@
 Бейзлайн — сортировка + слайс (N + logN);
 Необходимо обогнать этот вариант по сложности.
 */
+// Теория - https://www.youtube.com/watch?v=e2bLnb5Xdj8
 
 package main
 
