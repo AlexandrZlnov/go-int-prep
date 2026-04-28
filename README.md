@@ -39,15 +39,16 @@
 <details>
 <summary>Arr (массивы)</summary>
 
-* [task1](tasks/arr/task1/): получить из массива k наиболее часто встречающихся элементов
-* [task2](tasks/arr/task2/): слить 2 массива в один отсортированный (по возрастанию)
-* …
+ * [task1](tasks/arr/task1/): получить из массива k наиболее часто встречающихся элементов
+ * [task2](tasks/arr/task2/): слить 2 массива в один отсортированный (по возрастанию)
+ * [task3](tasks/arr/task3/): найти минимальное расстояние между двумя словами в массиве
+ * …
 </details>
 
 <details>
 <summary>Chan (каналы)</summary>
 
-* [task1](tasks/chan/!task1/): <span style="color:red">ПУСТАЯ</span>
+* [task1](tasks/chan/!task1/): реализуй worker pool
 * [task2](tasks/chan/task2/): дернуть N урлов с лимитом K
 * [task3](tasks/chan/task3/): pipeline — writer генерирует 1..10, double умножает значения на 2, reader выводит результат
 * [task4](tasks/chan/task4/): демонстрация select с таймерами и context (выбор источника завершения)
@@ -67,6 +68,9 @@
 * [task2](tasks/concurrency/task2!/): …
 * [task3](tasks/concurrency/task3/): …
 * [task4](tasks/concurrency/task4/): …
+* [task5](tasks/concurrency/task5/): параллельная обработка задач с ограничением числа горутин и сохранением порядка результатов
+* [task6](tasks/concurrency/task6/): разобраться с race condition при параллельной записи в map без синхронизации
+* [task7](tasks/concurrency/task7/): реализуй rate limiter (через token bucket) для ограничения RPS с потокобезопасностью
 * …
 </details>
 
@@ -107,6 +111,8 @@
 <details>
 <summary>Other (прочие)</summary>
 
+  <div style="padding-left: 30px;">
+  
   <details>
   <summary>Сourses (задачи из курсов)</summary>
 
@@ -167,6 +173,7 @@
 * [task1](tasks/slice/task1/): …
 * [task2](tasks/slice/task2/): …
 * [task3](tasks/slice/task3/): …
+* [task4](tasks/slice/task4/): исправь код, сделай чтобы слайсы не влияли друг на друга
 * …
 </details>
 
@@ -258,11 +265,15 @@
 
 ## Быстрый старт
 Клонируй репозиторий:  
-  ```git clone https://github.com/AlexandrZlnov/go-int-prep.git```  
-  ```cd go-int-prep```  
+```bash
+git clone https://github.com/AlexandrZlnov/go-int-prep.git  
+cd go-int-prep
+```  
 
 Запуск решения:  
-  ```go run tasks/arr/task1/main.go```
+```bash
+go run tasks/arr/task1/main.go
+```
 
 Или выполни `go run main.go` в соответствующей задаче.
 
@@ -273,15 +284,21 @@
 **Как добавить изменения**
 1. Сделай fork репозитория
 2. Создай новую ветку:  
-    ```git checkout -b feature/add-task```  
+```bash
+git checkout -b feature/add-task
+```  
 3. Создай папку в `tasks/<тема>/<taskN>`  
 4. Добавь:
- - `main.go` с решением задачи. 
- - `README.md` обнови основной README (добавь задачу в список).
+- `main.go` с решением задачи.  
+- `README.md` обнови основной README (добавь задачу в список).
 4. Сделай commit:  
-  ```git commit -m "add new task"```
+```bash
+git commit -m "add new task"
+```
 5. Запушь изменения:  
-  ```git push origin feature/add-task```
+```bash
+git push origin feature/add-task
+```
 6. Открой Pull Request
 
 ### Правила контрибьюции
@@ -290,14 +307,17 @@
 - Формат названия: taskN
 - Обязательно наличие:
   - `main.go` - задача с решением 
-  - `README.md` - с описанием твоей задачи
+  - `README.md` - с описанием твоей задачи  
+
 **Нейминг**
 - Используй task1, task2 и т.д.
 - Не используй спецсимволы
+
 **Что можно добавлять**
 - Новые задачи
 - Улучшения решений
 - Исправления и документацию
+
 **Что не принимается**
 - Дубликаты задач
 - Задачи без описания
