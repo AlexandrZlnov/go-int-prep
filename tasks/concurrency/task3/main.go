@@ -2,6 +2,8 @@
 // Есть самописный WaitGroup
 // Какие есть проблемы у данной реализации, как их исправить?
 
+// Исходный код:
+/*
 package main
 
 import (
@@ -24,6 +26,7 @@ func (w *WaitGroup) Wait() {
 	w.mu.Lock()
 	w.mu.Unlock()
 }
+*/
 
 // Ответ:
 
@@ -72,25 +75,44 @@ func (w *WaitGroup) Wait() {
 
 // Минимальный правильный вариант (каналами, без sync)
 
-type *WaitGroup struct {
-	ch chan struct{}
+package main
+
+import "sync"
+
+type WaitGroup struct {
+	mu    sync.Mutex
+	cond  *sync.Cond
+	count int
 }
 
-func New() {
-	return &WaitGroup{ch: make(chan struct{})}
+func New() *WaitGroup {
+	wg := &WaitGroup{}
+	wg.cond = sync.NewCond(&wg.mu)
+	return wg
 }
 
 func (w *WaitGroup) Go(f func()) {
+	w.mu.Lock()
+	w.count++
+	w.mu.Unlock()
+
 	go func() {
 		defer func() {
-			w.ch <- struct{}{}
+			w.mu.Lock()
+			w.count--
+			if w.count == 0 {
+				w.cond.Broadcast()
+			}
+			w.mu.Unlock()
 		}()
 		f()
 	}()
 }
 
 func (w *WaitGroup) Wait() {
-	for i:=0; i<n; i++ {
-		<- w.ch
+	w.mu.Lock()
+	for w.count > 0 {
+		w.cond.Wait()
 	}
+	w.mu.Unlock()
 }
