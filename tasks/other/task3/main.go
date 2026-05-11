@@ -78,3 +78,13 @@ func balance() (int, error) {
 	// Как-то считается сумма значений в мапе и возвращается
 	return sumOfMap(), nil
 }
+
+// Заглушка
+func bank_network_call(i int) (int, error) {
+	return 0, nil
+}
+
+// Заглушка
+func sumOfMap() int {
+	return 0
+}
